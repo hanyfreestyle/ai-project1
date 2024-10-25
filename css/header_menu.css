@@ -1,0 +1,186 @@
+/* استخدام متغيرات CSS لتعريف الألوان والأبعاد */
+:root {
+    --primary-color: #123456;
+    --secondary-color: #654321;
+    --dark-blue: #0A3974;
+    --white: #ffffff;
+    --orange: #FF5733;
+    --header-height: 70px;
+    --logo-height: 50px;
+    --logo-height-scrolled: 40px;
+    --transition-speed: 0.3s;
+}
+
+/* تحسين ترتيب وتوزيع العناصر */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    flex-wrap: wrap; /* دعم التوافق مع الأجهزة الصغيرة */
+}
+
+.logo img {
+    height: var(--logo-height);
+}
+
+.main-header.scrolled .logo img {
+    height: var(--logo-height-scrolled);
+}
+
+/* تحسين القائمة */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--secondary-color);
+}
+
+/* أيقونة القائمة الجانبية */
+.hamburger-menu {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    display: none; /* تظهر في الأجهزة الصغيرة */
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--dark-blue);
+    border-radius: 3px;
+    transition: all var(--transition-speed) ease;
+    transform-origin: center;
+}
+
+.hamburger-menu.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.full-screen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 57, 116, 0.95);
+    z-index: 2000;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.full-screen-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.full-screen-menu .menu-content {
+    padding: 70px 50px;
+    color: var(--white);
+    text-align: center;
+}
+
+.full-screen-menu .menu-content .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: var(--white);
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color var(--transition-speed) ease;
+    border: none;
+}
+
+.full-screen-menu .menu-content .close-menu::before {
+    content: "×";
+    font-size: 24px;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-menu .menu-content .close-menu:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.full-screen-menu .menu-section a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.8rem 0;
+    font-size: 1.2rem;
+    transition: color var(--transition-speed) ease;
+    text-align: center;
+}
+
+.full-screen-menu .menu-section a:hover {
+    color: var(--orange);
+}
+
+.menu__icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+/* تحسين دعم الأجهزة الصغيرة */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    .nav-menu {
+        display: none;
+    }
+}
+
+/* دعم الوضع الليلي */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #fff;
+    }
+
+    .nav-menu a {
+        color: var(--white);
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        color: var(--orange);
+    }
+}

@@ -1,0 +1,4 @@
+html[lang="ar"] body {
+    direction: rtl;
+    text-align: right;
+}

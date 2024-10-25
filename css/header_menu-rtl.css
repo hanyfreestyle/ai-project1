@@ -1,0 +1,27 @@
+.nav-container {
+    flex-direction: row-reverse; /* تعديل للعرض RTL */
+}
+
+.nav-menu {
+    flex-direction: row-reverse; /* تعديل للعرض RTL */
+}
+
+.full-screen-menu {
+    right: 0; /* تعديل للعرض RTL */
+}
+
+.full-screen-menu .menu-content {
+    text-align: right; /* تعديل للعرض RTL */
+}
+
+.full-screen-menu .menu-content .close-menu {
+    right: 20px; /* تعديل للعرض RTL */
+}
+
+.full-screen-menu .menu-section a {
+    text-align: right; /* تعديل للعرض RTL */
+}
+
+.menu__icon {
+    justify-content: flex-end; /* تعديل للعرض RTL */
+}
